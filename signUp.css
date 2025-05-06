@@ -161,6 +161,7 @@ body {
 .signUpValidation > input:focus {
   background-color: #f9f9f9;
   outline: none;
+  border: 1px solid #7b61ff;
 }
 
 .signUpBlogBtn {

@@ -181,6 +181,10 @@ body {
   transform: scale(1.05);
 }
 
+.signOutBtns {
+  cursor: pointer;
+}
+
 .sideBarBtn {
   width: 40px;
   height: 40px;

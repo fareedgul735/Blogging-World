@@ -69,11 +69,10 @@ imageInput.addEventListener("change", async (e) => {
       return;
     }
 
-    const { data: publicUrlData } = sbClient.storage
-      .from("users")
-      .getPublicUrl(filePath);
+    const { data } = sbClient.storage.from("users").getPublicUrl(filePath);
 
-    uploadedImagePath = publicUrlData.publicUrl;
+    uploadedImagePath = data?.publicUrl;
+
     console.log("Uploaded image URL:", uploadedImagePath);
   } catch (err) {
     console.error("Upload error:", err);
@@ -84,9 +83,7 @@ imageInput.addEventListener("change", async (e) => {
 const createBlog = document.querySelector("#createBlogBtn");
 
 const createData = async () => {
-  let imageUrl =
-    "https://abwfisafbjptoxfaxiud.supabase.co/storage/v1/object/" +
-    uploadedImagePath?.fullPath;
+  let imageUrl = uploadedImagePath;
 
   const user = auth.currentUser;
 

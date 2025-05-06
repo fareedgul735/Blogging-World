@@ -55,7 +55,7 @@ const getData = async () => {
     return blogData;
   } catch (error) {
     console.log("Error fetching blogs:", error);
-    return { empty: true, docs: [] };
+    return;
   }
 };
 
@@ -110,9 +110,9 @@ const readData = async () => {
     if (data.empty) {
       blog.innerHTML = `<p class="noBlogFound">No blogs available.</p>`;
     } else {
-      blog.innerHTML = data.docs
-        .map((recData) => createCard(recData.data(), recData.id))
-        .join("");
+      blog.innerHTML = data.docs.map((recData) =>
+        createCard(recData.data(), recData.id)
+      );
     }
 
     spinner.style.display = "none";

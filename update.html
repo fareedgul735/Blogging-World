@@ -40,14 +40,27 @@
           autocomplete="off"
           required="required"
         ></textarea>
-        <p>Update the Image-Url:</p>
-        <input
-          id="updateImageUrl"
-          type="url"
-          placeholder="Enter the Image-Url"
-          autocomplete="off"
-          required="required"
-        />
+
+        <p>Update the File:</p>
+        <div class="upload-container">
+          <label for="image-file" class="upload-box" id="preview-box">
+            <span class="plus-icon" id="plus-icon">+</span>
+            <img
+              id="update-preview-image"
+              class="preview-image"
+              src=""
+              alt="Preview"
+              style="display: none"
+            />
+            <input
+              type="file"
+              id="update-image-file"
+              class="hidden-file"
+              accept="image/*"
+              required
+            />
+          </label>
+        </div>
         <button type="button" id="updateBlogBtn" class="createBlogBtn">
           Update Blog
         </button>
@@ -67,5 +80,6 @@
     </footer>
 
     <script src="update.js" type="module"></script>
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
   </body>
 </html>

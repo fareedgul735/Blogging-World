@@ -136,7 +136,9 @@ body {
   position: relative;
   display: inline-block;
 }
-
+.signOutBtns{
+  cursor: pointer;
+}
 .userAvatar {
   width: 40px;
   height: 40px;
