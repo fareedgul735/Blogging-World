@@ -57,6 +57,7 @@ imageInput.addEventListener("change", async (e) => {
 
   const fileName = `${Date.now()}-${file.name}`;
   const filePath = `public/${fileName}`;
+  console.log(filePath);
 
   try {
     const { error } = await sbClient.storage
