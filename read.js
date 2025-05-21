@@ -171,3 +171,11 @@ sideBarBtnOpen?.addEventListener("click", () => {
 sideBarBtnClose?.addEventListener("click", () => {
   sideBar.classList.remove("active");
 });
+
+const redirectAvatar = document.querySelectorAll(".userAvatar");
+
+redirectAvatar.forEach((avatar) => {
+  avatar.addEventListener("click", () => {
+    location.href = "profile.html";
+  });
+});
