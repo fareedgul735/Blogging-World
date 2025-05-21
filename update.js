@@ -48,6 +48,7 @@ onAuthStateChanged(auth, async (user) => {
   const previewImage = document.querySelector("#update-preview-image");
 
   const urlId = window.location.hash.slice(1);
+  console.log(urlId);
   const blogRef = doc(db, "blogs", urlId);
   const blogSnap = await getDoc(blogRef);
 
@@ -66,6 +67,11 @@ onAuthStateChanged(auth, async (user) => {
   if (previewImage) {
     previewImage.src = uploadedImagePath;
     previewImage.style.display = "block";
+
+    previewImage.style.cursor = "pointer";
+    previewImage.addEventListener("click", () => {
+      updateImageFile.click();
+    });
   }
 
   updateImageFile.addEventListener("change", async (e) => {
