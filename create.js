@@ -128,12 +128,6 @@ const createData = async () => {
 
 createBlog.addEventListener("click", createData);
 
-const preLoader = document.querySelector("#preloader");
-window.addEventListener("load", () => {
-  setTimeout(() => {
-    preLoader.style.display = "none";
-  }, 500);
-});
 
 const signOutBtns = document.querySelectorAll(".signOutBtns");
 const modal = document.getElementById("signOutModal");

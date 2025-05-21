@@ -1,10 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+
 * {
   margin: 0px;
   padding: 0px;
+  font-family: "Poppins", sans-serif;
 }
 
 body {
-  font-family: sans-serif;
   overflow-x: hidden;
 }
 
@@ -19,7 +21,6 @@ body {
 }
 
 .blog-heading {
-  font-family: "Poppins", sans-serif;
   font-size: 16px;
   color: #ffffff;
   white-space: nowrap;
@@ -53,7 +54,7 @@ body {
 
 .create-blogs {
   width: 100%;
-  height: 88vh;
+  height: 100vh;
   background: #ffffff;
   display: flex;
   justify-content: space-evenly;
@@ -106,7 +107,6 @@ body {
 }
 
 .formValidation > p {
-  font-family: "Poppins", sans-serif;
   font-size: 18px;
   letter-spacing: 1px;
   color: #1a1a1a;
@@ -118,7 +118,6 @@ body {
 .formValidation > textarea {
   width: 96%;
   padding: 12px;
-  font-family: "Poppins", sans-serif;
   font-size: 14px;
   border-radius: 8px;
   border: 1px solid #ccc;
@@ -191,7 +190,6 @@ body {
   color: #fff;
   border: none;
   border-radius: 8px;
-  font-family: "Poppins", sans-serif;
   font-size: 16px;
   transition: 0.4s ease;
 }

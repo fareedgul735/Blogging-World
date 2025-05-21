@@ -170,10 +170,3 @@ closeBtn.addEventListener("click", () => {
 closeBtn2.addEventListener("click", () => {
   logInDiv.style.display = "none";
 });
-
-const preLoader = document.querySelector("#preloader");
-window.addEventListener("load", () => {
-  setTimeout(() => {
-    preLoader.style.display = "none";
-  }, 500);
-});

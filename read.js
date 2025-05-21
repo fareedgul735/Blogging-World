@@ -31,9 +31,13 @@ const blog = document.querySelector("#blogging");
 const spinner = document.querySelector("#spinner");
 
 const fetchCharacterByName = (name) => {
-  if (!name) return "NA";
+  if (!name || typeof name !== "string") return "NA";
+
   return name
-    .split(" ")
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
     .map((word) => word[0].toUpperCase())
     .join("");
 };

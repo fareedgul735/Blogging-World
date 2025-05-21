@@ -159,10 +159,3 @@ sideBarBtnOpen?.addEventListener("click", () => {
 sideBarBtnClose?.addEventListener("click", () => {
   sideBar.classList.remove("active");
 });
-
-let preLoading = document.getElementById("preloader");
-window.addEventListener("load", () => {
-  setTimeout(() => {
-    preLoading.style.display = "none";
-  }, 700);
-});

@@ -1,13 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
 body {
   overflow-x: hidden;
   background-color: #ffffff;
-  font-family: sans-serif;
 }
 
 #preloader {
@@ -71,7 +73,6 @@ body {
 }
 
 .tagline {
-  font-family: "Poppins", sans-serif;
   font-size: 16px;
   color: #ffffff;
   white-space: nowrap;

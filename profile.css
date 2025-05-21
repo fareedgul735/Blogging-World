@@ -11,6 +11,39 @@ body {
   background: #f0f0f0;
 }
 
+.autoTypingNavbar {
+  width: 100%;
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(90deg, #0f2027, #203a43, #2c5364);
+  padding: 0 20px;
+  box-shadow: rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px;
+}
+
+.tagline {
+  font-size: 16px;
+  color: #ffffff;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 2px solid #fff;
+  width: 0;
+  animation: typing 6s steps(30, end) infinite, blink 0.7s step-end infinite;
+}
+
+@keyframes typing {
+  0% {
+    width: 0;
+  }
+  50% {
+    width: 115px;
+  }
+  100% {
+    width: 0;
+  }
+}
+
 .blogDetail {
   width: 100%;
   min-height: 100vh;
@@ -38,13 +71,7 @@ body {
   border-radius: 50%;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
   margin-bottom: 30px;
-  transition: transform 0.5s ease;
-}
-
-.detailImg:hover {
-  transform: scale(1.08);
   cursor: pointer;
-  border: 1px solid #000;
 }
 
 .profile {
@@ -55,9 +82,9 @@ body {
   justify-content: center;
   align-items: center;
   background: #c5c4c4;
-  position: absolute;
+  position: fixed;
   top: 222px;
-  left: 57%;
+  left: 56%;
   font-size: 24px;
   cursor: pointer;
 }
@@ -137,5 +164,12 @@ body {
   }
   .updateBtn {
     padding: 8px;
+  }
+  .profile {
+    position: fixed;
+    top: 202px;
+    left: 66%;
+    font-size: 24px;
+    cursor: pointer;
   }
 }

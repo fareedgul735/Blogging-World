@@ -1,44 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+
 * {
   margin: 0px;
   padding: 0px;
   overflow: hidden;
-}
-
-body {
-  font-family: sans-serif;
-}
-
-#preloader {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background-color: #fff;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999999;
-}
-
-.circle-spinner {
-  width: 60px;
-  height: 60px;
-  border: 6px solid rgba(255, 255, 255, 0.2);
-  border-top: 6px solid #000;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-  margin-top: 20px;
-}
-
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+  font-family: "Poppins", sans-serif;
 }
 
 .navbar {
@@ -54,7 +20,6 @@ body {
   left: 50%;
   top: 30%;
   transform: translateX(-50%);
-  font-family: "Poppins", sans-serif;
   font-size: 16px;
   color: #ffffff;
   white-space: nowrap;
@@ -85,7 +50,6 @@ body {
     border-color: #fff;
   }
 }
-
 
 .signUpDiv {
   min-width: 100vw;
@@ -139,7 +103,6 @@ body {
 }
 
 .signUpValidation > p {
-  font-family: "Poppins", sans-serif;
   font-size: 18px;
   letter-spacing: 1px;
   color: #1a1a1a;
@@ -150,7 +113,6 @@ body {
 .signUpValidation > input {
   width: 96%;
   padding: 12px;
-  font-family: "Poppins", sans-serif;
   font-size: 14px;
   border-radius: 8px;
   border: 1px solid #ccc;
@@ -171,7 +133,6 @@ body {
   color: #fff;
   border: none;
   border-radius: 8px;
-  font-family: "Poppins", sans-serif;
   font-size: 16px;
   transition: 0.4s ease;
 }
@@ -221,7 +182,6 @@ body {
 }
 
 .logInValidation > p {
-  font-family: "Poppins", sans-serif;
   font-size: 18px;
   letter-spacing: 1px;
   color: #1a1a1a;
@@ -232,7 +192,6 @@ body {
 .logInValidation > input {
   width: 96%;
   padding: 12px;
-  font-family: "Poppins", sans-serif;
   font-size: 14px;
   border-radius: 8px;
   border: 1px solid #ccc;
@@ -252,7 +211,6 @@ body {
   color: #fff;
   border: none;
   border-radius: 8px;
-  font-family: "Poppins", sans-serif;
   font-size: 16px;
   transition: 0.4s ease;
 }
@@ -301,7 +259,6 @@ body {
 .signUpBtn {
   padding: 14px 24px;
   font-size: 17px;
-  font-family: "Poppins", sans-serif;
   background: linear-gradient(135deg, #7b61ff, #9d87ff);
   border: none;
   color: white;
@@ -343,7 +300,6 @@ body {
 .logInBtn {
   padding: 14px 24px;
   font-size: 17px;
-  font-family: "Poppins", sans-serif;
   background: linear-gradient(135deg, #7b61ff, #9d87ff);
   border: none;
   color: white;
