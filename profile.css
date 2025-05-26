@@ -9,6 +9,7 @@
 
 body {
   background: #f0f0f0;
+  /* overflow: hidden; */
 }
 
 .autoTypingNavbar {
@@ -82,9 +83,9 @@ body {
   justify-content: center;
   align-items: center;
   background: #c5c4c4;
-  position: fixed;
-  top: 222px;
-  left: 56%;
+  position: relative;
+  top: 282px;
+  left: 58%;
   font-size: 24px;
   cursor: pointer;
 }
@@ -133,8 +134,8 @@ body {
 
 .updateBtn {
   padding: 12px;
-  background: #fff;
-  color: #333;
+  background: #7b61ff;
+  color: #ffffff;
   border: none;
   border-radius: 10px;
   font-weight: bold;
@@ -145,7 +146,7 @@ body {
 }
 
 .updateBtn:hover {
-  background: #000;
+  background: #7053ff;
   color: #fff;
 }
 
