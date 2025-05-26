@@ -464,4 +464,8 @@ body {
   .formValidation {
     width: 90%;
   }
+  .footer {
+    width: 100%;
+    font-size: 12px;
+  }
 }

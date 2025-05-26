@@ -247,10 +247,7 @@ body {
     width: 82%;
   }
   .footer {
-    height: 40px;
     width: 100%;
-  }
-  .footer > span {
     font-size: 12px;
   }
 }
@@ -264,5 +261,6 @@ body {
   }
   .footer {
     width: 100%;
+    font-size: 12px;
   }
 }

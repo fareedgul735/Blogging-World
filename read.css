@@ -596,6 +596,7 @@ body {
   }
   .footer {
     width: 100%;
+    font-size: 12px;
   }
 }
 
@@ -655,7 +656,8 @@ body {
     font-size: 14px;
   }
 
-  .footer > span {
+  .footer {
+    width: 100%;
     font-size: 12px;
   }
 }
