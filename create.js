@@ -48,8 +48,8 @@ imageInput.addEventListener("change", async (e) => {
   if (!file) return alert("No file selected");
 
   const reader = new FileReader();
-  reader.onload = function (event) {
-    previewImage.src = event.target.result;
+  reader.onload = function (e) {
+    previewImage.src = e.target.result;
     previewImage.style.display = "block";
     plusIcon.style.display = "none";
   };
@@ -84,13 +84,12 @@ imageInput.addEventListener("change", async (e) => {
 const createBlog = document.querySelector("#createBlogBtn");
 
 const createData = async () => {
-  let imageUrl = uploadedImagePath;
-
   const user = auth.currentUser;
 
   let authorInput = document.querySelector("#author");
   let titleInput = document.querySelector("#title");
   let descriptionInput = document.querySelector("#description");
+  let imageUrl = uploadedImagePath;
 
   let inputArray = [authorInput, titleInput, descriptionInput];
   inputArray.forEach((input) => (input.style.border = "1px solid blue"));
@@ -127,7 +126,6 @@ const createData = async () => {
 };
 
 createBlog.addEventListener("click", createData);
-
 
 const signOutBtns = document.querySelectorAll(".signOutBtns");
 const modal = document.getElementById("signOutModal");
