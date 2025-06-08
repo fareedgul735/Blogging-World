@@ -1,4 +1,6 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js";
+import {
+  initializeApp
+} from "https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js";
 import {
   getFirestore,
   collection,
@@ -60,28 +62,35 @@ const getData = async () => {
 };
 
 const createCard = (cardDetail, id) => {
-  const { Image, Title, Description, Author, publishedAt, name } = cardDetail;
+  const {
+    Image,
+    Title,
+    Description,
+    Author,
+    publishedAt,
+    name
+  } = cardDetail;
   const titleLimit = 10;
   const descriptionLimit = 34;
   return `
     <div class="cardDiv">
+    <div class="avatarWrapper">
+  <div class="avatarDiv avatar">
+    <a class="avatarName">${fetchCharacterByName(name)}</a>
+  </div>
+  <span class= "fullName">${name}</span> 
+  </div>
+  <h2 class="cardTitle">${Title.slice(0, titleLimit)} ...</h2>
+  <p class="cardDescription">${Description.slice(
+    0,
+    descriptionLimit
+  )} .....</p>
+  <p class="cardMeta">${Author}
+    <span class="cardPublishedAt">${new Date(
+      publishedAt
+    ).toLocaleString()}</span>
+  </p>
       <img class="cardImg" src="${Image}" width="100%" height="242px" />
-        <div class="avatarWrapper">
-      <div class="avatarDiv avatar">
-        <a class="avatarName">${fetchCharacterByName(name)}</a>
-      </div>
-      <span class= "fullName">${name}</span> 
-      </div>
-      <h2 class="cardTitle">${Title.slice(0, titleLimit)} ...</h2>
-      <p class="cardDescription">${Description.slice(
-        0,
-        descriptionLimit
-      )} .....</p>
-      <p class="cardMeta">${Author}
-        <span class="cardPublishedAt">${new Date(
-          publishedAt
-        ).toLocaleString()}</span>
-      </p>
       <a class="moreDetail" href="detail.html#${id}">Read More</a>
     </div>`;
 };

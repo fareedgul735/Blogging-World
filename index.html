@@ -1,113 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Blogging World</title>
-    <link rel="icon" type="image/x-icon" href="blog img png.png" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div class="autoTypingNavbar">
-      <span class="tagline">Blogging World</span>
-    </div>
 
-    <div class="navbar">
-      <img
-        src="sideBlogs.png"
-        class="navbarLogo"
-        alt="blogLogo"
-        width="60px"
-        height="60px"
-      />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BlogsLife</title>
+  <link rel="icon" type="image/x-icon" href="blogs title.webp" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="style.css" />
+</head>
 
-      <div class="navbar-links">
-        <a href="#" class="socialBlogBtn auth-required"
-          >All Blogs <i class="fa-solid fa-thumbs-up"></i
-        ></a>
-        <a href="create.html" class="auth-required"
-          >Create Blogs <i class="fa-solid fa-plus"></i
-        ></a>
-        <a href="read.html" class="auth-required">View Blogs</a>
-        <a class="signOutBtn auth-required"
-          >Logout <i class="fa-solid fa-right-from-bracket"></i
-        ></a>
-        <a href="signUp.html" class="guest-only"
-          >Sign Up <i class="fa-solid fa-user-plus"></i
-        ></a>
+<body>
+  <div class="navbar">
+    <div class="logo-input">
+      <img src="blogs logo .webp" class="navbarLogo" alt="blogLogo" width="65" height="65" />
+      <div class="search-container">
+        <i class="fas fa-search search-icon"></i>
+        <input type="text" class="search-input" id="search-input" placeholder="Search Blogs Life" />
       </div>
     </div>
 
-    <div id="signOutModal" class="modal">
-      <div class="modal-content">
-        <p>Are you sure you want to Log out?</p>
-        <button id="confirmSignOut">OK</button>
-        <button id="cancelSignOut">Cancel</button>
-      </div>
+    <div class="navbar-links">
+      <a href="#" class="socialBlogBtn auth-required">Home<i class="fa-solid fa-house"></i></a>
+      <a href="create.html" class="auth-required">Upload Photo<i class="fa-solid fa-image"></i></a>
+      <!-- <a href="read.html" class="auth-required">View Blogs</a> -->
+      <a class="signOutBtn auth-required">Logout <i class="fa-solid fa-right-from-bracket"></i></a>
+      <a href="signUp.html" class="guest-only">Sign Up <i class="fa-solid fa-user-plus"></i></a>
     </div>
+  </div>
 
-    <div id="spinner"></div>
-
-    <div id="sideBarBtnOpen" class="sideBarBtn">
-      <i class="fa-solid fa-bars"></i>
+  <div id="signOutModal" class="modal">
+    <div class="modal-content">
+      <p>Are you sure you want to Log out?</p>
+      <button id="confirmSignOut">OK</button>
+      <button id="cancelSignOut">Cancel</button>
     </div>
+  </div>
 
-    <div id="leftSideSideBar" class="sideBar">
-      <div id="sideBarBtnClose" class="sideBarBtnClose">
-        <i class="fa-solid fa-xmark"></i>
-      </div>
-      <div class="bloggingImg">
-        <img
-          src="blog img png.png"
-          class="navbarLogo"
-          alt="blogLogo"
-          width="60px"
-          height="60px"
-        />
-      </div>
-      <div class="sideBarLinks">
-        <a href="#" class="sideBarBlogBtn auth-required"
-          >All Blogs <i class="fa-solid fa-thumbs-up"></i
-        ></a>
-        <a href="create.html" class="auth-required"
-          >Create Blogs <i class="fa-solid fa-plus"></i
-        ></a>
-        <a href="read.html" class="auth-required">View Blogs</a>
-        <a class="signOutBtn auth-required"
-          >Logout <i class="fa-solid fa-right-from-bracket"></i
-        ></a>
-        <a href="signUp.html" class="guest-only"
-          >Sign Up <i class="fa-solid fa-user-plus"></i
-        ></a>
-      </div>
+  <div id="spinner"></div>
+
+  <div id="sideBarBtnOpen" class="sideBarBtn">
+    <i class="fa-solid fa-bars"></i>
+  </div>
+
+  <div id="leftSideSideBar" class="sideBar">
+    <div id="sideBarBtnClose" class="sideBarBtnClose">
+      <i class="fa-solid fa-xmark"></i>
     </div>
-
-    <div class="main-read-blogs">
-      <div class="readBlog">
-        <div class="blogImg"></div>
-      </div>
-      <div class="blogs" id="blogging"></div>
+    <div class="bloggingImg">
+      <img src="blog img png.png" class="navbarLogo" alt="blogLogo" width="60px" height="60px" />
     </div>
+    <div class="sideBarLinks">
+      <a href="#" class="sideBarBlogBtn auth-required">All Blogs <i class="fa-solid fa-thumbs-up"></i></a>
+      <a href="create.html" class="auth-required">Create Blogs <i class="fa-solid fa-plus"></i></a>
+      <a href="read.html" class="auth-required">View Blogs</a>
+      <a class="signOutBtn auth-required">Logout <i class="fa-solid fa-right-from-bracket"></i></a>
+      <a href="signUp.html" class="guest-only">Sign Up <i class="fa-solid fa-user-plus"></i></a>
+    </div>
+  </div>
 
-    <footer class="footer">
-      <p>
-        © 2025 <strong>Blogging World</strong> — Made with ❤️ by
-        <a
-          href="https://www.linkedin.com/in/fareed-gul-946329333/"
-          target="_blank"
-        >
-          Fareed Gul
-        </a>
-      </p>
-    </footer>
+  <div class="main-container">
+    <div class="left-side">
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorum autem odit perspiciatis, porro eius iusto
+      doloribus inventore, omnis nesciunt at explicabo consequuntur nihil consequatur accusantium cupiditate nisi
+      perferendis placeat quidem?
+    </div>
+    <div class="blogs" id="blogging"></div>
+    <div class="right-side">
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorum autem odit perspiciatis, porro eius iusto
+      doloribus inventore, omnis nesciunt at explicabo consequuntur nihil consequatur accusantium cupiditate nisi
+      perferendis placeat quidem?
+
+    </div>
 
     <script src="app.js" type="module"></script>
-  </body>
+</body>
+
 </html>
