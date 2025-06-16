@@ -1,9 +1,12 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js";
+import {
+  initializeApp
+} from "https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js";
 import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   updateProfile,
+  onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
 
 const firebaseConfig = {
@@ -111,7 +114,7 @@ const onLogIn = async (e) => {
 
       console.log(response);
       alert("Log In Successfully");
-      
+
       logInEmail.value = "";
       logInPassword.value = "";
       inputsArray.forEach((inputField) => {
@@ -170,3 +173,4 @@ closeBtn.addEventListener("click", () => {
 closeBtn2.addEventListener("click", () => {
   logInDiv.style.display = "none";
 });
+

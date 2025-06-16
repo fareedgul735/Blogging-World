@@ -1,4 +1,6 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js";
+import {
+  initializeApp
+} from "https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js";
 import {
   getFirestore,
   collection,
@@ -60,7 +62,9 @@ imageInput.addEventListener("change", async (e) => {
   console.log(filePath);
 
   try {
-    const { error } = await sbClient.storage
+    const {
+      error
+    } = await sbClient.storage
       .from("users")
       .upload(filePath, file);
 
@@ -70,7 +74,9 @@ imageInput.addEventListener("change", async (e) => {
       return;
     }
 
-    const { data } = sbClient.storage.from("users").getPublicUrl(filePath);
+    const {
+      data
+    } = sbClient.storage.from("users").getPublicUrl(filePath);
 
     uploadedImagePath = data?.publicUrl;
 
@@ -86,12 +92,10 @@ const createBlog = document.querySelector("#createBlogBtn");
 const createData = async () => {
   const user = auth.currentUser;
 
-  let authorInput = document.querySelector("#author");
   let titleInput = document.querySelector("#title");
-  let descriptionInput = document.querySelector("#description");
   let imageUrl = uploadedImagePath;
 
-  let inputArray = [authorInput, titleInput, descriptionInput];
+  let inputArray = [titleInput];
   inputArray.forEach((input) => (input.style.border = "1px solid blue"));
 
   let checkIsEmpty =
@@ -106,9 +110,7 @@ const createData = async () => {
   }
 
   const payLoad = {
-    Author: authorInput.value,
     Title: titleInput.value,
-    Description: descriptionInput.value,
     Image: imageUrl,
     publishedAt: new Date().toISOString(),
     uid: user.uid,

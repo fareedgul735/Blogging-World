@@ -12,6 +12,43 @@ body {
   background-color: #ffffff;
 }
 
+.launch-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  background: #ffffff;
+  z-index: 99999900000000000000000000;
+  padding: 30px 0;
+}
+
+.logo {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.launch-Logo {
+  width: 95px;
+  height: 95px;
+  cursor: pointer;
+}
+
+.launch-character-name {
+  text-align: center;
+  color: #777;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.launch-character-name span {
+  display: block;
+}
+
 
 .navbar {
   width: 100%;
@@ -357,110 +394,111 @@ body {
   width: 45%;
   min-height: calc(100vh - 48px);
   margin-left: 6%;
-  background-color: #00ff73;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  /* position: absolute;
-  left: 30%; */
   padding-bottom: 90px;
   flex-wrap: wrap;
 }
 
-.cardDiv {
+.blogCardDiv {
   width: 100%;
-  background: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
   margin: 20px auto;
-  overflow-x: hidden;
-  margin-top: -16px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  align-self: flex-start;
-}
-
-.cardDiv:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
-}
-
-.cardImg {
-  object-fit: cover;
-  border-top-left-radius: 6px;
-  border-top-right-radius: 6px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
 }
 
 .avatarWrapper {
+  padding: 10px 15px;
+}
+
+.avatarDiv {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   position: relative;
-  display: inline-block;
 }
 
 .avatar {
   width: 42px;
   height: 42px;
   border-radius: 50%;
-  background: #00bbff;
-  color: #fff;
-  font-weight: 500;
+  cursor: pointer;
+  background: #00ccff;
+  transition: 0.3s;
   display: flex;
-  align-items: center;
   justify-content: center;
-  cursor: pointer;
-  margin-left: 12px;
-  margin-top: 8px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  align-items: center;
 }
 
-.avatar:hover {
-  transform: scale(1.1);
-  box-shadow: 0 0 0 4px rgba(0, 187, 255, 0.3);
+.avatarInfo {
+  display: flex;
+  flex-direction: column;
 }
 
-.avatar a {
-  font-size: 18px;
-  text-decoration: none;
-  color: #fff;
-  cursor: pointer;
-}
-
-.fullName {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background-color: #fff;
-  padding: 4px 8px;
-  border-radius: 6px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-  white-space: nowrap;
+.avatarName {
+  font-weight: bold;
   font-size: 14px;
-  color: #333;
-  z-index: 10;
-  transition: all 0.2s ease-in-out;
-  text-transform: capitalize;
+  text-decoration: none;
+  color: #000;
 }
 
-.avatarWrapper:hover .fullName {
+.blogsUploadTime {
+  font-size: 12px;
+  color: rgb(0, 0, 0);
+}
+
+.avatarInfo.blogsUploadTime {
   display: block;
 }
 
-.cardTitle {
-  font-size: clamp(18px, 2.5vw, 24px);
-  color: #333;
-  padding: 20px;
+.titleCont {
+  padding: 0 15px;
+  border-bottom: 1px solid #edebeb;
 }
 
-.cardDescription {
-  font-size: clamp(14px, 2vw, 16px);
-  color: #555;
-  padding: 0 20px;
-  line-height: 1.6;
-}
-
-.cardMeta {
+.blogCardTitle {
   font-size: 14px;
-  color: #777;
-  padding: 10px 20px;
+  font-weight: 300;
+  margin-bottom: 10px;
+  color: #333;
+
+}
+
+.imageCont {
+  width: 100%;
+  height: auto;
+}
+
+.blogCardImg {
+  width: 100%;
+  height: 552px;
+  object-fit: cover;
+}
+
+.blogItemsTag {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  border-top: 1px solid #edebeb;
+}
+
+.likeBtn {
+  cursor: pointer;
+  font-size: 14px;
+  color: #1877f2;
+}
+
+.moreDetail {
+  font-size: 14px;
+  text-decoration: none;
+  color: #1877f2;
+  font-weight: 500;
 }
 
 .noBlogFound {
@@ -471,20 +509,7 @@ body {
   font-size: 32px;
 }
 
-.moreDetail {
-  display: inline-block;
-  padding: 12px 20px;
-  margin: 15px 20px;
-  background-color: #3498db;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 8px;
-  transition: background-color 0.3s ease;
-}
 
-.moreDetail:hover {
-  background-color: #2980b9;
-}
 
 .right-side {
   width: 16%;
@@ -522,6 +547,15 @@ body {
 }
 
 @media (max-width: 992px) {
+
+  .left-side {
+    display: none;
+  }
+
+  .right-side {
+    display: none;
+  }
+
   .readBlog {
     display: none;
   }

@@ -65,36 +65,37 @@ const createCard = (cardDetail, id) => {
   const {
     Image,
     Title,
-    Description,
-    Author,
     publishedAt,
     name
   } = cardDetail;
-  const titleLimit = 10;
-  const descriptionLimit = 34;
   return `
-    <div class="cardDiv">
+  <div class="blogCardDiv">
     <div class="avatarWrapper">
-  <div class="avatarDiv avatar">
-    <a class="avatarName">${fetchCharacterByName(name)}</a>
-  </div>
-  <span class= "fullName">${name}</span> 
-  </div>
-  <h2 class="cardTitle">${Title.slice(0, titleLimit)} ...</h2>
-  <p class="cardDescription">${Description.slice(
-    0,
-    descriptionLimit
-  )} .....</p>
-  <p class="cardMeta">${Author}
-    <span class="cardPublishedAt">${new Date(
-      publishedAt
-    ).toLocaleString()}</span>
-  </p>
-      <img class="cardImg" src="${Image}" width="100%" height="242px" />
-      <a class="moreDetail" href="detail.html#${id}">Read More</a>
-    </div>`;
-};
+      <div class="avatarDiv">
+          <a class="avatar">${fetchCharacterByName(name)}</a>
+        <div class="avatarInfo">
+          <a class="avatarName">${name}</a>
+          <span class="blogsUploadTime">${new Date(publishedAt).toLocaleString()}</span>
+        </div>
+      </div>
+    </div>
+    <div class="titleCont">
+      <p class="blogCardTitle">${Title}</p>
+    </div>
 
+    <div class="imageCont">
+      <img class="blogCardImg" src="${Image}" alt="blog image" />
+    </div>
+    <div class="totalLikes">
+     👍 1.1M
+    </div>
+    <div class="blogItemsTag">
+      <span class="likeBtn">👍 Like</span>
+      <a class="moreDetail" href="detail.html#${id}">Read More</a>
+    </div>
+  </div>
+`;
+}
 const avatarWrappers = document.querySelectorAll(".avatarWrapper");
 
 avatarWrappers.forEach((wrapper) => {
@@ -168,3 +169,8 @@ sideBarBtnOpen?.addEventListener("click", () => {
 sideBarBtnClose?.addEventListener("click", () => {
   sideBar.classList.remove("active");
 });
+
+const launchScreen = document.getElementById("launch-screen");
+setTimeout(() => {
+  launchScreen.style.display = "none"
+}, 500)
