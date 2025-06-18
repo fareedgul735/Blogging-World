@@ -1,85 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Update Your Blog</title>
-    <link rel="icon" type="image/x-icon" href="blog img png.png" />
-    <link rel="stylesheet" href="update.css" />
-  </head>
-  <body>
-    <div class="navbar">
-      <span id="blogHeading" class="blog-heading">Update Your Blog</span>
-    </div>
 
-    <div class="create-blogs">
-      <div class="blogImg"></div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Update Your Blog</title>
+  <link rel="icon" type="image/x-icon" href="blog img png.png" />
+  <link rel="stylesheet" href="./styles/update.css" />
+</head>
 
-      <div class="formValidation">
-        <p>Update the Author:</p>
-        <input
-          id="updateAuthor"
-          type="text"
-          placeholder="Enter the Author"
-          autocomplete="off"
-          required="required"
-        />
-        <p>Update the Title:</p>
-        <input
-          id="updateTitle"
-          type="text"
-          placeholder="Enter the Title"
-          autocomplete="off"
-          required="required"
-        />
-        <p>Update the Description:</p>
-        <textarea
-          id="updateDescription"
-          type="text"
-          placeholder="Enter the Description"
-          autocomplete="off"
-          required="required"
-        ></textarea>
+<body>
+  <div class="navbar">
+    <span id="blogHeading" class="blog-heading">Update Your Blog</span>
+  </div>
 
-        <p>Update the File:</p>
-        <div class="upload-container">
-          <label for="image-file" class="upload-box" id="preview-box">
-            <span class="plus-icon" id="plus-icon">+</span>
-            <img
-              id="update-preview-image"
-              class="preview-image"
-              src=""
-              alt="Preview"
-              style="display: none"
-            />
-            <input
-              type="file"
-              id="update-image-file"
-              class="hidden-file"
-              accept="image/*"
-              required
-            />
-          </label>
-        </div>
-        <button type="button" id="updateBlogBtn" class="createBlogBtn">
-          Update Blog
-        </button>
+  <div class="create-blogs">
+    <div class="blogImg"></div>
+
+    <div class="formValidation">
+      <p>Update the Author:</p>
+      <input id="updateAuthor" type="text" placeholder="Enter the Author" autocomplete="off" required="required" />
+      <p>Update the Title:</p>
+      <input id="updateTitle" type="text" placeholder="Enter the Title" autocomplete="off" required="required" />
+      <p>Update the Description:</p>
+      <textarea id="updateDescription" type="text" placeholder="Enter the Description" autocomplete="off"
+        required="required"></textarea>
+
+      <p>Update the File:</p>
+      <div class="upload-container">
+        <label for="image-file" class="upload-box" id="preview-box">
+          <span class="plus-icon" id="plus-icon">+</span>
+          <img id="update-preview-image" class="preview-image" src="" alt="Preview" style="display: none" />
+          <input type="file" id="update-image-file" class="hidden-file" accept="image/*" required />
+        </label>
       </div>
+      <button type="button" id="updateBlogBtn" class="createBlogBtn">
+        Update Blog
+      </button>
     </div>
+  </div>
 
-    <footer class="footer">
-      <p>
-        © 2025 <strong>Blogging World</strong> — Made with ❤️ by
-        <a
-          href="https://www.linkedin.com/in/fareed-gul-946329333/"
-          target="_blank"
-        >
-          Fareed Gul
-        </a>
-      </p>
-    </footer>
+  <footer class="footer">
+    <p>
+      © 2025 <strong>Blogging World</strong> — Made with ❤️ by
+      <a href="https://www.linkedin.com/in/fareed-gul-946329333/" target="_blank">
+        Fareed Gul
+      </a>
+    </p>
+  </footer>
 
-    <script src="update.js" type="module"></script>
-    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
-  </body>
+  <script src="./javascript/update.js" type="module"></script>
+  <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+</body>
+
 </html>

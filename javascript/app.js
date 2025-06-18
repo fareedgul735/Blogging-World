@@ -61,6 +61,7 @@ const getData = async () => {
   }
 };
 
+
 const createCard = (cardDetail, id) => {
   const {
     Image,
@@ -72,7 +73,7 @@ const createCard = (cardDetail, id) => {
   <div class="blogCardDiv">
     <div class="avatarWrapper">
       <div class="avatarDiv">
-          <a class="avatar">${fetchCharacterByName(name)}</a>
+      <a class="avatar">${fetchCharacterByName(name)}</a>
         <div class="avatarInfo">
           <a class="avatarName">${name}</a>
           <span class="blogsUploadTime">${new Date(publishedAt).toLocaleString()}</span>
@@ -86,12 +87,13 @@ const createCard = (cardDetail, id) => {
     <div class="imageCont">
       <img class="blogCardImg" src="${Image}" alt="blog image" />
     </div>
-    <div class="totalLikes">
-     👍 1.1M
+    <div class="likes-shares">
+     <div class="likes">👍 1.1M</div>
+     <div class="shares"> 1.1m Shares</div>
     </div>
     <div class="blogItemsTag">
       <span class="likeBtn">👍 Like</span>
-      <a class="moreDetail" href="detail.html#${id}">Read More</a>
+      <a class="moreDetail" href="detail.html#${id}">Share</a>
     </div>
   </div>
 `;
