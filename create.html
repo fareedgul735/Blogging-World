@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Create Blogs</title>
-  <link rel="icon" type="image/x-icon" href="blog img png.png" />
+  <link rel="icon" type="image/x-icon" href="./photos/blogs-title.webp" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
     integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -13,63 +13,21 @@
 </head>
 
 <body>
-  <div class="autoTypingNavbar">
-    <span class="tagline">Create Blogs</span>
-  </div>
-
-  <div class="navbar">
-    <img src="sideBlogs.png" class="navbarLogo" alt="blogLogo" width="60px" height="60px" />
-
-    <div class="navbar-links">
-      <a href="index.html">
-        All Blogs <i class="fa-solid fa-thumbs-up"></i>
-      </a>
-
-      <a href="#" class="socialBlogBtn">
-        Create Blogs <i class="fa-solid fa-plus"></i>
-      </a>
-
-      <a href="read.html"> View Blogs </a>
-
-      <a href="#" class="signOutBtns">
-        Logout <i class="fa-solid fa-right-from-bracket"></i>
-      </a>
-    </div>
-  </div>
-
-  <div id="signOutModal" class="modal">
-    <div class="modal-content">
-      <p>Are you sure you want to Log out?</p>
-      <button id="confirmSignOut">OK</button>
-      <button id="cancelSignOut">Cancel</button>
-    </div>
-  </div>
-
-  <div id="sideBarBtnOpen" class="sideBarBtn">
-    <i class="fa-solid fa-bars"></i>
-  </div>
-
-  <div id="leftSideSideBar" class="sideBar">
-    <div id="sideBarBtnClose" class="sideBarBtnClose">
-      <i class="fa-solid fa-xmark"></i>
-    </div>
-    <div class="bloggingImg">
-      <img src="blog img png.png" class="navbarLogo" alt="blogLogo" width="60px" height="60px" />
-    </div>
-    <div class="sideBarLinks">
-      <a href="index.html">All Blogs <i class="fa-solid fa-thumbs-up"></i></a>
-      <a href="#" class="sideBarBlogBtn">Create Blogs <i class="fa-solid fa-plus"></i></a>
-      <a href="read.html">View Blogs</a>
-      <a href="#" class="signOutBtns">Logout <i class="fa-solid fa-right-from-bracket"></i></a>
-    </div>
-  </div>
-
   <div class="create-blogs" id="content">
-    <div class="blogImg"></div>
-
     <div class="formValidation">
-      <p>Enter the Caption:</p>
-      <input id="title" type="text" placeholder="Enter the Caption" autocomplete="off" required="required" />
+      <div class="blog-head">
+        <h3> Create Blogs</h3>
+        <a href="home.html"><i class="fa-solid fa-xmark"></i></a>
+      </div>
+      <div class="wrapper-avatar">
+        <a href="profile.html" id="create-avatar" class="create-avatar">
+
+        </a>
+        <a href="profile.html" id="create-avatar-name" class="create-avatar-name">
+        </a>
+      </div>
+      <input id="title" class="title" type="text" placeholder="What`s on your mind, Buddy?" autocomplete="off"
+        required="required" />
       <div class="upload-container">
         <label for="image-file" class="upload-box" id="preview-box">
           <span class="plus-icon" id="plus-icon">+</span>
@@ -83,17 +41,8 @@
     </div>
   </div>
 
-  <footer class="footer">
-    <p>
-      © 2025 <strong>Blogging World</strong> — Made with ❤️ by
-      <a href="https://www.linkedin.com/in/fareed-gul-946329333/" target="_blank">
-        Fareed Gul
-      </a>
-    </p>
-  </footer>
-
-  <script src="./styles/create.css" type="module"></script>
-
+  <script src="./javascript/create.js" type="module"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
 </body>
 

@@ -1,4 +1,6 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js";
+import {
+  initializeApp
+} from "https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js";
 import {
   getFirestore,
   collection,
@@ -43,7 +45,13 @@ const fetchCharacterByName = (name) => {
 };
 
 const createCard = (cardDetail, id) => {
-  const { Image, Title, Description, Author, publishedAt } = cardDetail;
+  const {
+    Image,
+    Title,
+    Description,
+    Author,
+    publishedAt
+  } = cardDetail;
   const titleLimit = 10;
   const descriptionLimit = 34;
 
@@ -116,7 +124,7 @@ onAuthStateChanged(auth, async (user) => {
     }
 
     try {
-      const q = query(collection(db, "blogs"), where("uid", "==", user.uid));
+      const q = query(collection(db, "blogs"), where("userId", "==", user.uid));
       const querySnapshot = await getDocs(q);
 
       if (querySnapshot.empty) {
@@ -131,6 +139,7 @@ onAuthStateChanged(auth, async (user) => {
 
       spinner.style.display = "none";
       blog.style.display = "flex";
+
     } catch (error) {
       console.log("Error getting blogs:", error);
       alert("Error getting user blogs.");

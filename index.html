@@ -4,91 +4,57 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Blogging World</title>
+  <title>BlogsLife-Login or Signup</title>
   <link rel="icon" type="image/x-icon" href="./photos/blogs-title.webp" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
     integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
+
   <link rel="stylesheet" href="./styles/style.css" />
 </head>
 
 <body>
-  <div class="launch-screen" id="launch-screen">
-    <div class="logo">
-      <img src="./photos/blogs_logo.webp" class="launch-Logo" alt="blogLogo" width="65" height="65" />
-    </div>
-    <div class="launch-character-name">
-      <span>Developed By</span>
-      <span>Fareed Gul</span>
-    </div>
-  </div>
-
-  <div class="navbar">
-    <div class="logo-input">
-      <img src="./photos/blogs_logo.webp" class="navbarLogo" alt="blogLogo" width="65" height="65" />
-      <div class="search-container">
-        <i class="fas fa-search search-icon"></i>
-        <input type="text" class="search-input" id="search-input" placeholder="Search Blogs Life" />
+  <div class="main-wrapper">
+    <div class="app-wrapper">
+      <div class="app-logo">
+        <img src="./photos/blogs_logo.webp" alt="blogs-life" width="100px" height="100px">
+      </div>
+      <div class="app-name">
+        <h1>BlogsLife</h1>
+      </div>
+      <div class="created-at">
+        <span>Developed By Fareed Khan</span>
       </div>
     </div>
-
-    <div class="navbar-links">
-      <a href="#" class="socialBlogBtn auth-required">Home<i class="fa-solid fa-house"></i></a>
-      <a href="create.html" class="auth-required">Upload Photo<i class="fa-solid fa-image"></i></a>
-      <!-- <a href="read.html" class="auth-required">View Blogs</a> -->
-      <a class="signOutBtn auth-required">Logout <i class="fa-solid fa-right-from-bracket"></i></a>
-      <a href="signUp.html" class="guest-only">Sign Up <i class="fa-solid fa-user-plus"></i></a>
+    <div class="login-wrapper" id="login-wrapper">
+      <form class="login">
+        <p>Email Address:</p>
+        <input type="email" id="logInEmail" placeholder="Email" autocomplete="off" />
+        <p>Email Password:</p>
+        <input type="password" id="logInPassword" placeholder="Password" autocomplete="off" />
+        <button id="logInBtn" class="logInBlogBtn" type="button">Log In</button>
+      </form>
+      Don’t have an account?
+      <span id="redirect-signup" class="redirect-signup">SignUp</span>
     </div>
-    <div class="nav-avatar">
-      
-    </div>
-  </div>
-
-  <div id="signOutModal" class="modal">
-    <div class="modal-content">
-      <p>Are you sure you want to Log out?</p>
-      <button id="confirmSignOut">OK</button>
-      <button id="cancelSignOut">Cancel</button>
-    </div>
-  </div>
-
-  <div id="spinner"></div>
-
-  <div id="sideBarBtnOpen" class="sideBarBtn">
-    <i class="fa-solid fa-bars"></i>
-  </div>
-
-  <div id="leftSideSideBar" class="sideBar">
-    <div id="sideBarBtnClose" class="sideBarBtnClose">
-      <i class="fa-solid fa-xmark"></i>
-    </div>
-    <div class="bloggingImg">
-      <img src="blog img png.png" class="navbarLogo" alt="blogLogo" width="60px" height="60px" />
-    </div>
-    <div class="sideBarLinks">
-      <a href="#" class="sideBarBlogBtn auth-required">All Blogs <i class="fa-solid fa-thumbs-up"></i></a>
-      <a href="create.html" class="auth-required">Create Blogs <i class="fa-solid fa-plus"></i></a>
-      <a href="read.html" class="auth-required">View Blogs</a>
-      <a class="signOutBtn auth-required">Logout <i class="fa-solid fa-right-from-bracket"></i></a>
-      <a href="signUp.html" class="guest-only">Sign Up <i class="fa-solid fa-user-plus"></i></a>
+    <div class="signup-wrapper" id="signup-wrapper">
+      <form class="signup" id="signup">
+        <p>UserName :</p>
+        <input type="text" id="userName" placeholder="Name" autocomplete="off" />
+        <p>Email Address:</p>
+        <input type="email" id="signUpEmail" placeholder="Email" autocomplete="off" />
+        <p>Email Password:</p>
+        <input type="password" id="signUpPassword" placeholder="Password" autocomplete="off" />
+        <button id="signUpBtn" class="signUpBlogBtn" type="button">
+          SignUp
+        </button>
+      </form>
+      Already have an account?
+      <span id="redirect-signin" class="redirect-signin">SignIn</span>
     </div>
   </div>
 
-  <div class="main-container">
-    <div class="left-side">
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorum autem odit perspiciatis, porro eius iusto
-      doloribus inventore, omnis nesciunt at explicabo consequuntur nihil consequatur accusantium cupiditate nisi
-      perferendis placeat quidem?
-    </div>
-    <div class="blogs" id="blogging"></div>
-    <div class="right-side">
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorum autem odit perspiciatis, porro eius iusto
-      doloribus inventore, omnis nesciunt at explicabo consequuntur nihil consequatur accusantium cupiditate nisi
-      perferendis placeat quidem?
-
-    </div>
-
-    <script src="./javascript/app.js" type="module"></script>
+  <script src="./javascript/app.js" type="module"></script>
 </body>
 
 </html>

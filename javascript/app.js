@@ -2,14 +2,11 @@ import {
   initializeApp
 } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js";
 import {
-  getFirestore,
-  collection,
-  getDocs,
-} from "https://www.gstatic.com/firebasejs/11.4.0/firebase-firestore.js";
-import {
   getAuth,
-  onAuthStateChanged,
-  signOut,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  updateProfile,
+  onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
 
 const firebaseConfig = {
@@ -23,156 +20,127 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
 const auth = getAuth(app);
-const blogRef = collection(db, "blogs");
 
-const blog = document.querySelector("#blogging");
-const spinner = document.querySelector("#spinner");
+let signUpBtn = document.getElementById("signUpBtn");
+let logInButton = document.getElementById("logInBtn");
+
+const redirectSignup = document.getElementById("redirect-signup");
+const redirectSignin = document.getElementById("redirect-signin");
+const signinWrapper = document.getElementById("login-wrapper")
+const signupWrapper = document.getElementById("signup-wrapper")
+
+redirectSignup.addEventListener("click", () => {
+  signupWrapper.style.display = "block"
+  signinWrapper.style.display = "none"
+})
+redirectSignin.addEventListener("click", () => {
+  signinWrapper.style.display = "block"
+  signupWrapper.style.display = "none"
+})
 
 onAuthStateChanged(auth, (user) => {
-  const authRequiredElements = document.querySelectorAll(".auth-required");
-  const guestOnlyElements = document.querySelectorAll(".guest-only");
+  if (user) location.href = "home.html"
+})
 
-  if (user) {
-    authRequiredElements.forEach((el) => (el.style.display = "inline-block"));
-    guestOnlyElements.forEach((el) => (el.style.display = "none"));
+const onSignUp = async (e) => {
+  e.preventDefault();
+  let userName = document.getElementById("userName");
+  let verifyEmail = document.getElementById("signUpEmail");
+  let verifyPassword = document.getElementById("signUpPassword");
+
+  let inputsArray = [userName, verifyEmail, verifyPassword];
+  inputsArray.forEach(
+    (inputField) => (inputField.style.border = "1px solid blue")
+  );
+
+  let fieldIsEmpty = inputsArray.some(
+    (inputField) => inputField.value.trim() === ""
+  );
+
+  if (fieldIsEmpty) {
+    inputsArray.forEach((inputField) => {
+      if (inputField.value.trim() === "") {
+        inputField.style.border = "1px solid red";
+      }
+    });
   } else {
-    authRequiredElements.forEach((el) => (el.style.display = "none"));
-    guestOnlyElements.forEach((el) => (el.style.display = "inline-block"));
-  }
-});
-
-const fetchCharacterByName = (name) => {
-  if (!name) return "!";
-  return name
-    .split(" ")
-    .map((word) => word[0].toUpperCase())
-    .join("");
-};
-
-const getData = async () => {
-  try {
-    const blogData = await getDocs(blogRef);
-    return blogData;
-  } catch (error) {
-    console.log("Error fetching blogs:", error);
-    return;
-  }
-};
-
-
-const createCard = (cardDetail, id) => {
-  const {
-    Image,
-    Title,
-    publishedAt,
-    name
-  } = cardDetail;
-  return `
-  <div class="blogCardDiv">
-    <div class="avatarWrapper">
-      <div class="avatarDiv">
-      <a class="avatar">${fetchCharacterByName(name)}</a>
-        <div class="avatarInfo">
-          <a class="avatarName">${name}</a>
-          <span class="blogsUploadTime">${new Date(publishedAt).toLocaleString()}</span>
-        </div>
-      </div>
-    </div>
-    <div class="titleCont">
-      <p class="blogCardTitle">${Title}</p>
-    </div>
-
-    <div class="imageCont">
-      <img class="blogCardImg" src="${Image}" alt="blog image" />
-    </div>
-    <div class="likes-shares">
-     <div class="likes">👍 1.1M</div>
-     <div class="shares"> 1.1m Shares</div>
-    </div>
-    <div class="blogItemsTag">
-      <span class="likeBtn">👍 Like</span>
-      <a class="moreDetail" href="detail.html#${id}">Share</a>
-    </div>
-  </div>
-`;
-}
-const avatarWrappers = document.querySelectorAll(".avatarWrapper");
-
-avatarWrappers.forEach((wrapper) => {
-  const avatar = wrapper.querySelector(".avatar");
-  const fullName = wrapper.querySelector(".fullName");
-
-  avatar.addEventListener("mouseover", () => {
-    fullName.style.display = "inline";
-  });
-
-  avatar.addEventListener("mouseout", () => {
-    fullName.style.display = "none";
-  });
-});
-
-const readData = async () => {
-  spinner.style.display = "block";
-  blog.style.display = "none";
-
-  try {
-    const data = await getData();
-    if (data.empty) {
-      blog.innerHTML = `<p class="noBlogFound">No blogs available.</p>`;
-    } else {
-      blog.innerHTML = data.docs.map((recData) =>
-        createCard(recData.data(), recData.id)
+    try {
+      let response = await createUserWithEmailAndPassword(
+        auth,
+        verifyEmail.value,
+        verifyPassword.value
+      );
+      await updateProfile(response.user, {
+        displayName: userName?.value,
+      });
+      userName.value = "";
+      verifyEmail.value = "";
+      verifyPassword.value = "";
+      setTimeout(() => {
+        location.href = "home.html";
+      }, 300);
+      inputsArray.forEach(
+        (inputField) => (inputField.style.border = "1px solid gray")
+      );
+    } catch (error) {
+      console.log(error);
+      inputsArray.forEach(
+        (inputField) => (inputField.style.border = "1px solid red")
       );
     }
+  }
+};
+signUpBtn.addEventListener("click", onSignUp);
 
-    spinner.style.display = "none";
-    blog.style.display = "flex";
-  } catch (error) {
-    console.log("Error reading data:", error);
+
+const onLogIn = async (e) => {
+  e.preventDefault();
+  let logInEmail = document.getElementById("logInEmail");
+  let logInPassword = document.getElementById("logInPassword");
+
+  let inputsArray = [logInEmail, logInPassword];
+
+  inputsArray.forEach((inputField) => {
+    inputField.style.border = "1px solid blue";
+  });
+
+  let fieldIsEmpty = inputsArray.some(
+    (inputField) => inputField.value.trim() === ""
+  );
+
+  if (fieldIsEmpty) {
+    inputsArray.forEach((inputField) => {
+      if (inputField.value.trim() === "") {
+        inputField.style.border = "1px solid red";
+      }
+    });
+  } else {
+    try {
+      const response = await signInWithEmailAndPassword(
+        auth,
+        logInEmail.value,
+        logInPassword.value
+      );
+
+      console.log(response);
+      alert("Log In Successfully");
+
+      logInEmail.value = "";
+      logInPassword.value = "";
+      inputsArray.forEach((inputField) => {
+        inputField.style.border = "1px solid gray";
+      });
+      setTimeout(() => {
+        location.href = "home.html";
+      }, 300);
+    } catch (e) {
+      console.log(e);
+      inputsArray.forEach((inputField) => {
+        inputField.style.border = "1px solid red";
+      });
+    }
   }
 };
 
-readData();
-
-const signOutBtns = document.querySelectorAll(".signOutBtn");
-const modal = document.getElementById("signOutModal");
-const confirmBtn = document.getElementById("confirmSignOut");
-const cancelBtn = document.getElementById("cancelSignOut");
-
-signOutBtns.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    modal.style.display = "flex";
-  });
-});
-
-cancelBtn.addEventListener("click", () => {
-  modal.style.display = "none";
-});
-
-confirmBtn.addEventListener("click", async () => {
-  try {
-    await signOut(auth);
-    location.href = "index.html";
-  } catch (error) {
-    alert("Error Login out:", error.message);
-  }
-});
-
-const sideBarBtnOpen = document.querySelector("#sideBarBtnOpen");
-const sideBarBtnClose = document.querySelector("#sideBarBtnClose");
-const sideBar = document.querySelector("#leftSideSideBar");
-
-sideBarBtnOpen?.addEventListener("click", () => {
-  sideBar.classList.add("active");
-});
-
-sideBarBtnClose?.addEventListener("click", () => {
-  sideBar.classList.remove("active");
-});
-
-const launchScreen = document.getElementById("launch-screen");
-setTimeout(() => {
-  launchScreen.style.display = "none"
-}, 500)
+logInButton.addEventListener("click", onLogIn);

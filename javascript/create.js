@@ -9,7 +9,6 @@ import {
 import {
   getAuth,
   onAuthStateChanged,
-  signOut,
 } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
 
 const firebaseConfig = {
@@ -27,30 +26,52 @@ const db = getFirestore(app);
 const auth = getAuth(app);
 const blogRef = collection(db, "blogs");
 
-// this is supabase project Url //
 const url = "https://abwfisafbjptoxfaxiud.supabase.co";
 
-// this is supabase project api key //
 const anonKey =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFid2Zpc2FmYmpwdG94ZmF4aXVkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQ1NTUxODksImV4cCI6MjA2MDEzMTE4OX0.u-rQYaFtmQXgTJ0_3T85T1P28Wmb7F81jfTWl2O8xdA";
 const sbClient = supabase.createClient(url, anonKey);
 
 let uploadedImagePath = "";
-
-onAuthStateChanged(auth, (user) => {
-  if (!user) location.href = "index.html";
-});
-
 const imageInput = document.querySelector("#image-file");
 const previewImage = document.getElementById("preview-image");
 const plusIcon = document.getElementById("plus-icon");
+const avatarDiv = document.getElementById("create-avatar")
+const avatarName = document.getElementById("create-avatar-name")
+
+const fetchCharacterByName = (name) => {
+  if (!name || typeof name !== "string") return "NA";
+
+  return name
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((word) => word[0].toUpperCase())
+    .join("");
+};
+
+onAuthStateChanged(auth, (user) => {
+  if (!user) {
+    location.href = "home.html"
+  }
+  if (user.displayName) {
+    const userAvatar = fetchCharacterByName(user.displayName);
+    avatarDiv.innerText = userAvatar
+    avatarName.innerText = user.displayName
+  }
+})
+
 
 imageInput.addEventListener("change", async (e) => {
   const file = e.target.files[0];
-  if (!file) return alert("No file selected");
+  if (!file) return await Swal.fire({
+    icon: "error",
+    title: "File is not Selected"
+  })
 
   const reader = new FileReader();
-  reader.onload = function (e) {
+  reader.onload = (e) => {
     previewImage.src = e.target.result;
     previewImage.style.display = "block";
     plusIcon.style.display = "none";
@@ -70,7 +91,10 @@ imageInput.addEventListener("change", async (e) => {
 
     if (error) {
       console.error("Image upload failed:", error.message);
-      alert("Image upload failed");
+      await Swal.fire({
+        icon: "error",
+        title: "Image Upload File"
+      })
       return;
     }
 
@@ -83,7 +107,10 @@ imageInput.addEventListener("change", async (e) => {
     console.log("Uploaded image URL:", uploadedImagePath);
   } catch (err) {
     console.error("Upload error:", err);
-    alert("Unexpected error during upload");
+    await Swal.fire({
+      icon: "error",
+      title: "UnExpectedError"
+    })
   }
 });
 
@@ -96,15 +123,18 @@ const createData = async () => {
   let imageUrl = uploadedImagePath;
 
   let inputArray = [titleInput];
-  inputArray.forEach((input) => (input.style.border = "1px solid blue"));
+  inputArray.forEach((input) => (input.style.borderBottom = "1px solid blue"));
 
   let checkIsEmpty =
     inputArray.some((input) => input.value.trim() === "") || !uploadedImagePath;
 
   if (checkIsEmpty && !uploadedImagePath) {
-    alert("All fields including image are required");
+    await Swal.fire({
+      icon: "error",
+      title: "fields are required!"
+    })
     inputArray.forEach((input) => {
-      if (input.value.trim() === "") input.style.border = "1px solid red";
+      if (input.value.trim() === "") input.style.borderBottom = "1px solid red";
     });
     return;
   }
@@ -119,48 +149,18 @@ const createData = async () => {
 
   try {
     await addDoc(blogRef, payLoad);
-    alert("Blog created successfully!");
-    location.href = "read.html";
+    await Swal.fire({
+      title: "Blog Uploaded Successfully",
+      icon: "success"
+    })
+    location.href = "home.html";
   } catch (error) {
     console.log(error);
-    alert("Blog creation failed!");
+    await Swal.fire({
+      icon: "error",
+      title: "Blog Certain Failed"
+    })
   }
 };
 
 createBlog.addEventListener("click", createData);
-
-const signOutBtns = document.querySelectorAll(".signOutBtns");
-const modal = document.getElementById("signOutModal");
-const confirmBtn = document.getElementById("confirmSignOut");
-const cancelBtn = document.getElementById("cancelSignOut");
-
-signOutBtns.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    modal.style.display = "flex";
-  });
-});
-
-cancelBtn.addEventListener("click", () => {
-  modal.style.display = "none";
-});
-
-confirmBtn.addEventListener("click", async () => {
-  try {
-    await signOut(auth);
-    location.href = "index.html";
-  } catch (error) {
-    alert("Error Login out:", error.message);
-  }
-});
-
-const sideBarBtnOpen = document.querySelector("#sideBarBtnOpen");
-const sideBarBtnClose = document.querySelector("#sideBarBtnClose");
-const sideBar = document.querySelector("#leftSideSideBar");
-
-sideBarBtnOpen?.addEventListener("click", () => {
-  sideBar.classList.add("active");
-});
-
-sideBarBtnClose?.addEventListener("click", () => {
-  sideBar.classList.remove("active");
-});
