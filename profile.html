@@ -4,44 +4,53 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image/x-icon" href="blog img png.png" />
+  <link rel="icon" type="image/x-icon" href="./photos/blogs-title.webp" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
     integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <title>User Profile</title>
+  <title>Profile</title>
   <link rel="stylesheet" href="./styles/profile.css" />
 </head>
 
 <body>
-  <div class="autoTypingNavbar">
-    <span class="tagline">Update Profile</span>
+  <div class="wrapper-user-name">
+    <h3 id="user-name"></h3>
   </div>
   <div class="blogDetail">
-    <div class="profile-img">
-      <img id="profileImage" class="detailImg" src="" />
-      <label for="imageInput" class="profile">
-        <i class="profile-icon fa-solid fa-camera"></i>
-        <input type="file" id="imageInput" style="display: none" />
-      </label>
+    <label id="profile" class="profile-img">
+      <h2 id="profileImage" class="detailImg"></h2>
+    </label>
+  </div>
+  <div id="spinner"></div>
+  <div class="main-read-blogs">
+    <div class="sidebar-wrapper">
+      <div class="wrapper">
+        <div class="sidebar-avatar"><i class="fa-solid fa-home"></i></div>
+        <a href="home.html" class="avatarName">Home</a>
+      </div>
+      <div class="wrapper">
+        <div class="sidebar-avatar"><i class="fa-solid fa-image"></i></div>
+        <a href="create.html" class="avatarName">Upload Blog</a>
+      </div>
+      <div class="wrapper">
+        <div class="sidebar-avatar"><i class="fa-solid fa-question"></i></div>
+        <a href="help.html" class="avatarName">Help Center</a>
+      </div>
+      <div class="wrapper">
+        <div class="sidebar-avatar"><i class="fa-solid fa-info-circle"></i></div>
+        <a href="about.html" class="avatarName">About</a>
+      </div>
+      <div class="wrapper" id="logout-wrapper">
+        <div class="sidebar-avatar"><i class="fa-solid fa-right-from-bracket"></i>
+          Logout
+        </div>
+      </div>
     </div>
-    <h1 class="detailTitle">Update Profile</h1>
-
-    <div class="detailDes">
-      <form id="updateForm">
-        <div class="formField">
-          <input type="text" id="name" placeholder="Full Name" autocomplete="off" />
-        </div>
-        <div class="formField">
-          <input type="email" id="email" placeholder="Email" autocomplete="off" />
-        </div>
-        <div class="formField">
-          <input type="password" id="password" placeholder="New Password" autocomplete="off" />
-        </div>
-        <button type="submit" class="updateBtn">Update Profile</button>
-      </form>
-    </div>
+    <div class="blogs" id="blogging"></div>
   </div>
   <script type="module" src="./javascript/profile.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </body>
 
 </html>

@@ -31,36 +31,52 @@ const anonKey =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFid2Zpc2FmYmpwdG94ZmF4aXVkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDQ1NTUxODksImV4cCI6MjA2MDEzMTE4OX0.u-rQYaFtmQXgTJ0_3T85T1P28Wmb7F81jfTWl2O8xdA";
 const sbClient = supabase.createClient(url, anonKey);
 
+const updateBtn = document.querySelector("#updateBlogBtn");
+const updateTitle = document.querySelector("#updateTitle");
+const updateImageFile = document.querySelector("#update-image-file");
+const previewImage = document.querySelector("#update-preview-image");
+const avatarDiv = document.getElementById("create-avatar")
+const avatarName = document.getElementById("create-avatar-name")
 let uploadedImagePath = "";
+
+const fetchCharacterByName = (name) => {
+  if (!name || typeof name !== "string") return "NA";
+
+  return name
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((word) => word[0].toUpperCase())
+    .join("");
+};
 
 onAuthStateChanged(auth, (user) => {
   if (!user) {
     location.href = "index.html"
   }
+  if (user.displayName) {
+    const userAvatar = fetchCharacterByName(user.displayName)
+    avatarDiv.innerText = userAvatar;
+    avatarName.innerText = user.displayName
+  }
 })
 
-const updateBtn = document.querySelector("#updateBlogBtn");
-const updateAuthor = document.querySelector("#updateAuthor");
-const updateTitle = document.querySelector("#updateTitle");
-const updateDes = document.querySelector("#updateDescription");
-const updateImageFile = document.querySelector("#update-image-file");
-const previewImage = document.querySelector("#update-preview-image");
-
 const urlId = window.location.hash.slice(1);
-console.log(urlId);
+console.log(urlId, "urlId")
 const blogRef = doc(db, "blogs", urlId);
 const blogSnap = await getDoc(blogRef);
 
 if (!blogSnap.exists()) {
-  alert("Blog Not Found!");
-  return;
+  await Swal.fire({
+    icon: "error",
+    title: "Blogs Not Found"
+  })
 }
 
 const blogData = blogSnap.data();
 
-updateAuthor.value = blogData.Author;
 updateTitle.value = blogData.Title;
-updateDes.value = blogData.Description;
 uploadedImagePath = blogData.Image;
 
 if (previewImage) {
@@ -75,7 +91,10 @@ if (previewImage) {
 
 updateImageFile.addEventListener("change", async (e) => {
   const file = e.target.files[0];
-  if (!file) return alert("No file selected");
+  if (!file) return await Swal.fire({
+    icon: "error",
+    title: "File is not Selected"
+  })
 
   const reader = new FileReader();
   reader.onload = function (event) {
@@ -96,7 +115,10 @@ updateImageFile.addEventListener("change", async (e) => {
 
     if (error) {
       console.error("Image upload failed:", error.message);
-      alert("Image upload failed");
+      await Swal.fire({
+        icon: "error",
+        title: "Image Upload File"
+      })
       return;
     }
 
@@ -109,25 +131,27 @@ updateImageFile.addEventListener("change", async (e) => {
     uploadedImagePath = publicUrlData.publicUrl;
   } catch (err) {
     console.error("Upload error:", err);
-    alert("Unexpected error during upload");
+    await Swal.fire({
+      icon: "error",
+      title: "Unexpected Error"
+    })
   }
 });
 
 updateBtn.addEventListener("click", async () => {
   if (
-    updateAuthor.value.trim() === "" ||
     updateTitle.value.trim() === "" ||
-    updateDes.value.trim() === "" ||
     !uploadedImagePath
   ) {
-    alert("All fields including image are required!");
+    await Swal.fire({
+      icon: "error",
+      title: "fields are required"
+    })
     return;
   }
 
   const payLoad = {
-    Author: updateAuthor.value,
     Title: updateTitle.value,
-    Description: updateDes.value,
     Image: uploadedImagePath,
     uid: user.uid,
     name: user.displayName,
@@ -136,10 +160,16 @@ updateBtn.addEventListener("click", async () => {
 
   try {
     await updateDoc(blogRef, payLoad);
-    alert("Blog Updated Successfully!");
-    window.location.href = "read.html";
+    await Swal.fire({
+      icon: "success",
+      title: "Blog Created Successfully"
+    })
+    window.location.href = "profile.html";
   } catch (err) {
     console.log(err);
-    alert("Update Failed!");
+    await Swal.fire({
+      icon: "error",
+      title: "Upload Failed"
+    })
   }
 });

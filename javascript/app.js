@@ -48,6 +48,18 @@ const onSignUp = async (e) => {
   let userName = document.getElementById("userName");
   let verifyEmail = document.getElementById("signUpEmail");
   let verifyPassword = document.getElementById("signUpPassword");
+  const regex = /^[a-zA-Z0-9 ]{3,30}$/;
+  if (!regex.test(userName.value)) {
+    console.log("❌ Invalid username");
+    await Swal.fire({
+      icon: "error",
+      text: "❌ Invalid Username! Please use only letters and numbers (3-20 characters)."
+    })
+    return
+  } else {
+    console.log("✅ Valid username");
+  }
+
 
   let inputsArray = [userName, verifyEmail, verifyPassword];
   inputsArray.forEach(
@@ -77,9 +89,7 @@ const onSignUp = async (e) => {
       userName.value = "";
       verifyEmail.value = "";
       verifyPassword.value = "";
-      setTimeout(() => {
-        location.href = "home.html";
-      }, 300);
+      location.href = "home.html";
       inputsArray.forEach(
         (inputField) => (inputField.style.border = "1px solid gray")
       );
@@ -117,23 +127,18 @@ const onLogIn = async (e) => {
     });
   } else {
     try {
-      const response = await signInWithEmailAndPassword(
+      await signInWithEmailAndPassword(
         auth,
         logInEmail.value,
         logInPassword.value
       );
-
-      console.log(response);
-      alert("Log In Successfully");
 
       logInEmail.value = "";
       logInPassword.value = "";
       inputsArray.forEach((inputField) => {
         inputField.style.border = "1px solid gray";
       });
-      setTimeout(() => {
-        location.href = "home.html";
-      }, 300);
+      location.href = "home.html";
     } catch (e) {
       console.log(e);
       inputsArray.forEach((inputField) => {

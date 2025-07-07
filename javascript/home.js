@@ -82,6 +82,7 @@ const getData = async () => {
   }
 };
 
+
 const createCard = (cardDetail, id) => {
   const {
     Image,
@@ -100,12 +101,6 @@ const createCard = (cardDetail, id) => {
         <div class="avatarInfo">
           <a class="avatarName">${name}</a>
           <span class="blogsUploadTime">${new Date(publishedAt).toLocaleString()}</span>
-        </div>
-        <div class="follow" id="follow">
-        <i class="fa-solid fa-user-plus"></i> Follow
-        </div>
-        <div class="unfollow" id="unfollow">
-         <i class="fa-solid fa-user-minus"></i> Following
         </div>
       </div>
     </div>

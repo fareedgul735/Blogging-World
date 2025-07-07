@@ -1,32 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Update Your Blog</title>
   <link rel="icon" type="image/x-icon" href="blog img png.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="./styles/update.css" />
 </head>
 
 <body>
-  <div class="navbar">
-    <span id="blogHeading" class="blog-heading">Update Your Blog</span>
-  </div>
-
-  <div class="create-blogs">
-    <div class="blogImg"></div>
-
+  <div class="update-blogs">
     <div class="formValidation">
-      <p>Update the Author:</p>
-      <input id="updateAuthor" type="text" placeholder="Enter the Author" autocomplete="off" required="required" />
-      <p>Update the Title:</p>
-      <input id="updateTitle" type="text" placeholder="Enter the Title" autocomplete="off" required="required" />
-      <p>Update the Description:</p>
-      <textarea id="updateDescription" type="text" placeholder="Enter the Description" autocomplete="off"
-        required="required"></textarea>
-
-      <p>Update the File:</p>
+      <div class="blog-head">
+        <h3>Create Blogs</h3>
+        <a href="home.html"><i class="fa-solid fa-xmark"></i></a>
+      </div>
+      <div class="wrapper-avatar">
+        <a href="profile.html" id="create-avatar" class="create-avatar">
+        </a>
+        <a href="profile.html" id="create-avatar-name" class="create-avatar-name">
+        </a>
+      </div>
+      <input class="updateTitle" id="updateTitle" type="text" placeholder="What`s on your mind, Buddy ?"
+        autocomplete="off" required="required" />
       <div class="upload-container">
         <label for="image-file" class="upload-box" id="preview-box">
           <span class="plus-icon" id="plus-icon">+</span>
@@ -34,20 +33,12 @@
           <input type="file" id="update-image-file" class="hidden-file" accept="image/*" required />
         </label>
       </div>
-      <button type="button" id="updateBlogBtn" class="createBlogBtn">
-        Update Blog
+      <button type="button" id="updateBlogBtn" class="updateBlogBtn">
+        Upload Blog
       </button>
     </div>
   </div>
 
-  <footer class="footer">
-    <p>
-      © 2025 <strong>Blogging World</strong> — Made with ❤️ by
-      <a href="https://www.linkedin.com/in/fareed-gul-946329333/" target="_blank">
-        Fareed Gul
-      </a>
-    </p>
-  </footer>
 
   <script src="./javascript/update.js" type="module"></script>
   <script src="https://unpkg.com/@supabase/supabase-js@2"></script>

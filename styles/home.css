@@ -313,6 +313,7 @@ body {
   font-weight: 600;
 }
 
+
 .blogs {
   width: 45%;
   min-height: calc(100vh - 48px);
@@ -337,65 +338,9 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-
 .avatarWrapper {
   padding: 10px 15px;
 }
-
-.follow {
-  font-size: 16px;
-  cursor: pointer;
-  color: rgb(17, 0, 255);
-  position: absolute;
-  top: 0px;
-  right: 2px;
-  font-weight: 600;
-  display: inline-block;
-  transition: color 0.3s ease;
-}
-
-.follow::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -2px;
-  width: 0%;
-  height: 2px;
-  background-color: rgb(17, 0, 255);
-  transition: width 0.3s ease;
-}
-
-.follow:hover::after {
-  width: 100%;
-}
-
-.unfollow {
-  font-size: 16px;
-  cursor: pointer;
-  color: rgb(255, 0, 0);
-  position: absolute;
-  top: 0px;
-  right: 2px;
-  font-weight: 600;
-  display: none;
-  transition: color 0.3s ease;
-}
-
-.unfollow::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -2px;
-  width: 0%;
-  height: 2px;
-  background-color: rgb(255, 0, 0);
-  transition: width 0.3s ease;
-}
-
-.unfollow:hover::after {
-  width: 100%;
-}
-
 .avatarDiv {
   display: flex;
   align-items: center;
@@ -442,7 +387,6 @@ body {
 .avatarInfo.blogsUploadTime {
   display: block;
 }
-
 .titleCont {
   padding: 0 15px;
   border-bottom: 1px solid #edebeb;
